@@ -13,283 +13,348 @@ import {
   ArrowRight,
   MessageSquare,
   Upload,
-  Search,
   MapPin,
-  Check,
-  Percent,
   FileText,
-  Lock,
+  Search,
+  Check,
 } from "lucide-react";
 
 export default function Hero() {
-  const [activeTab, setActiveTab] = useState<"book" | "prescription">("book");
-  const [locality, setLocality] = useState("");
-  const [selectedTest, setSelectedTest] = useState("Full Body Health Checkup (₹1,499)");
-  const [rxUploaded, setRxUploaded] = useState(false);
+  const [activeTab, setActiveTab] = useState<"packages" | "prescription" | "locality">("packages");
+  const [localityQuery, setLocalityQuery] = useState("");
+  const [localityChecked, setLocalityChecked] = useState(false);
+  const [prescriptionUploaded, setPrescriptionUploaded] = useState(false);
 
-  const handleRxSubmit = (e: React.FormEvent) => {
+  const handlePrescriptionSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setRxUploaded(true);
+    setPrescriptionUploaded(true);
+  };
+
+  const handleLocalityCheck = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (localityQuery.trim()) {
+      setLocalityChecked(true);
+    }
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-blue-950 py-10 sm:py-16 lg:py-24 text-white border-b border-slate-800">
-      {/* Dynamic Background Glow Blobs */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-10 w-[400px] h-[400px] bg-emerald-500/15 rounded-full blur-[100px] pointer-events-none" />
-      
-      {/* Background Micro Grid Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none" />
+    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/20 to-slate-50 py-8 sm:py-14 lg:py-20 border-b border-slate-200/60">
+      {/* Background Subtle Gradient Blobs */}
+      <div className="absolute top-10 left-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
-          {/* Left Column: Revenue-Driving Copy & Trust Value Prop */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          {/* Left Column: Revenue-Generating Copy & Trust Badges */}
+          <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-left">
             
-            {/* Offer Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-300 text-xs font-bold tracking-wide shadow-inner max-w-full">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
-              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span className="truncate">GUWAHATI SPECIAL: Flat 30% OFF on First Home Blood Test</span>
+            {/* Top Offer Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-bold tracking-wide shadow-2xs">
+              <Sparkles className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <span>GUARANTEED 30% OFF ON YOUR FIRST BLOOD TEST</span>
             </div>
 
-            {/* Main Conversion Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12]">
-              Certified <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">Phlebotomist</span> at Your Doorstep in Guwahati
+            {/* Main Headline */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
+              Certified <span className="text-blue-600">Phlebotomist</span> at Your Doorstep in Guwahati
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed">
-              No long hospital queues or travel hassle. Our certified phlebotomists collect blood samples at your home with <strong className="text-white">100% sterile single-use kits</strong> and <strong className="text-white">cold-chain transport</strong>. Reports delivered in 24 hours.
+            <p className="text-sm sm:text-lg text-slate-600 max-w-2xl font-normal leading-relaxed">
+              No long lab queues or traffic stress. Our trained, certified phlebotomists visit your home in Guwahati with sterile single-use kits and cold-chain sample transport containers ($2^\circ\text{C} - 8^\circ\text{C}$).
             </p>
 
-            {/* Trust Grid Badges */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs sm:text-sm font-semibold text-slate-200">
-              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/50 border border-slate-700/60">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>NABL & ISO Partner Laboratories</span>
+            {/* Verified Trust Pillars */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm font-semibold text-slate-700">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>NABL & ISO Accredited Partner Labs</span>
               </div>
-              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/50 border border-slate-700/60">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Zero Advance Payment (Pay Cash/UPI After)</span>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>100% Sterile Single-Use Equipment</span>
               </div>
-              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/50 border border-slate-700/60">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Digital PDF Reports on WhatsApp in 24 hrs</span>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Fast Digital PDF Reports on WhatsApp</span>
               </div>
-              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-slate-800/50 border border-slate-700/60">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>30-Min Fast Technician Arrival</span>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Pay Cash or UPI After Sample Collection</span>
               </div>
             </div>
 
-            {/* Primary Action Buttons */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            {/* Action CTAs */}
+            <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <a
                 href="#booking"
-                className="w-full sm:w-auto px-7 py-4 rounded-2xl text-sm sm:text-base font-extrabold text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 shadow-xl shadow-blue-600/30 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2.5 group"
+                className="w-full sm:w-auto px-7 py-4 rounded-xl text-sm sm:text-base font-extrabold text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/25 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2.5 group"
               >
-                <Calendar className="w-5 h-5 text-blue-200" />
-                <span>Book Home Collection</span>
+                <Calendar className="w-5 h-5" />
+                <span>Book Home Sample Collection</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
 
               <div className="grid grid-cols-2 gap-2.5 w-full sm:w-auto">
                 <a
                   href="tel:+919365001624"
-                  className="px-4 py-4 rounded-2xl text-xs sm:text-sm font-bold text-white bg-slate-800/90 hover:bg-slate-700 border border-slate-700 transition-colors flex items-center justify-center gap-2"
+                  className="px-4 py-3.5 sm:py-4 rounded-xl text-xs sm:text-sm font-bold text-slate-800 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs transition-colors flex items-center justify-center gap-2"
                 >
-                  <Phone className="w-4 h-4 text-emerald-400" />
+                  <Phone className="w-4 h-4 text-emerald-600" />
                   <span>Call 9365001624</span>
                 </a>
 
                 <a
-                  href="https://wa.me/917575962265?text=Hi%20LabLink,%20I%20want%20to%20book%20a%20blood%20test%20in%20Guwahati"
+                  href="https://wa.me/917575962265"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-4 rounded-2xl text-xs sm:text-sm font-bold text-emerald-300 bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-500/40 transition-colors flex items-center justify-center gap-2"
+                  className="px-4 py-3.5 sm:py-4 rounded-xl text-xs sm:text-sm font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors flex items-center justify-center gap-2"
                 >
-                  <MessageSquare className="w-4 h-4 text-emerald-400" />
+                  <MessageSquare className="w-4 h-4 text-emerald-600" />
                   <span>WhatsApp</span>
                 </a>
               </div>
             </div>
 
-            {/* Micro Guarantee Label */}
-            <p className="text-[11px] text-slate-400 flex items-center gap-2 pt-1 font-medium">
-              <Lock className="w-3.5 h-3.5 text-slate-400" />
-              <span>100% Confidential • No Hidden Convenience Fees in Guwahati</span>
-            </p>
-
-            {/* Proof Bar */}
-            <div className="pt-6 border-t border-slate-800 grid grid-cols-3 gap-3 text-center sm:text-left">
+            {/* Real Guwahati Metrics */}
+            <div className="pt-5 border-t border-slate-200/80 grid grid-cols-3 gap-2 sm:gap-4 text-center sm:text-left">
               <div>
-                <p className="text-2xl sm:text-3xl font-black text-white">10,000+</p>
-                <p className="text-[10px] sm:text-xs font-semibold text-slate-400">Guwahati Patients Served</p>
+                <p className="text-xl sm:text-2xl font-black text-slate-900">10,000+</p>
+                <p className="text-[10px] sm:text-xs font-semibold text-slate-500">Samples Collected</p>
               </div>
               <div>
-                <p className="text-2xl sm:text-3xl font-black text-blue-400">30 Mins</p>
-                <p className="text-[10px] sm:text-xs font-semibold text-slate-400">Average Arrival Time</p>
+                <p className="text-xl sm:text-2xl font-black text-blue-600">30 Mins</p>
+                <p className="text-[10px] sm:text-xs font-semibold text-slate-500">Avg Arrival Time</p>
               </div>
               <div>
-                <p className="text-2xl sm:text-3xl font-black text-emerald-400">4.9 ★</p>
-                <p className="text-[10px] sm:text-xs font-semibold text-slate-400">Patient Satisfaction</p>
+                <p className="text-xl sm:text-2xl font-black text-emerald-600">4.9 ★</p>
+                <p className="text-[10px] sm:text-xs font-semibold text-slate-500">Patient Rating</p>
               </div>
             </div>
 
           </div>
 
           {/* Right Column: High-Converting Interactive Booking & Prescription Widget */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md bg-slate-950/90 backdrop-blur-2xl rounded-3xl p-5 sm:p-7 border border-slate-800 shadow-2xl shadow-black/80 space-y-5">
+          <div className="lg:col-span-5 relative mt-4 lg:mt-0">
+            <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-5 sm:p-6 space-y-4">
               
-              {/* Tab Selector Header */}
-              <div className="grid grid-cols-2 p-1 rounded-2xl bg-slate-900 border border-slate-800 text-xs font-extrabold">
+              {/* Card Header Tabs */}
+              <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-2xl text-xs font-bold text-slate-600">
                 <button
-                  type="button"
-                  onClick={() => setActiveTab("book")}
-                  className={`py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
-                    activeTab === "book"
-                      ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
-                      : "text-slate-400 hover:text-white"
+                  onClick={() => setActiveTab("packages")}
+                  className={`flex-1 py-2 rounded-xl transition-all ${
+                    activeTab === "packages"
+                      ? "bg-white text-blue-600 shadow-sm font-extrabold"
+                      : "hover:text-slate-900"
                   }`}
                 >
-                  <Calendar className="w-3.5 h-3.5" />
-                  <span>Instant Booking</span>
+                  Quick Book
                 </button>
-                
                 <button
-                  type="button"
                   onClick={() => setActiveTab("prescription")}
-                  className={`py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+                  className={`flex-1 py-2 rounded-xl transition-all ${
                     activeTab === "prescription"
-                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30"
-                      : "text-slate-400 hover:text-white"
+                      ? "bg-white text-blue-600 shadow-sm font-extrabold"
+                      : "hover:text-slate-900"
                   }`}
                 >
-                  <Upload className="w-3.5 h-3.5" />
-                  <span>Upload Doctor Rx</span>
+                  Upload Rx
+                </button>
+                <button
+                  onClick={() => setActiveTab("locality")}
+                  className={`flex-1 py-2 rounded-xl transition-all ${
+                    activeTab === "locality"
+                      ? "bg-white text-blue-600 shadow-sm font-extrabold"
+                      : "hover:text-slate-900"
+                  }`}
+                >
+                  Check Area
                 </button>
               </div>
 
-              {/* TAB 1: Instant Quick Booking Widget */}
-              {activeTab === "book" && (
-                <div className="space-y-4 animate-in fade-in duration-200">
+              {/* TAB 1: Quick Popular Packages */}
+              {activeTab === "packages" && (
+                <div className="space-y-3 animate-in fade-in duration-200">
                   <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="font-bold text-white text-base">Quick Home Collection</h3>
-                      <p className="text-[11px] text-slate-400">Guwahati Doorstep Slot Booking</p>
-                    </div>
-                    <span className="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold text-[10px] uppercase tracking-wider flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                      Slot Available
+                    <span className="text-xs font-extrabold text-slate-900 uppercase tracking-wider">
+                      Popular Health Checkups
+                    </span>
+                    <span className="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                      Free Home Collection
                     </span>
                   </div>
 
-                  <div className="space-y-3">
-                    {/* Locality Input */}
-                    <div>
-                      <label className="text-[11px] font-bold text-slate-300 block mb-1">
-                        Your Guwahati Area / Locality:
-                      </label>
-                      <div className="relative">
-                        <MapPin className="w-4 h-4 text-blue-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                        <input
-                          type="text"
-                          placeholder="e.g. Zoo Road, GS Road, Jalukbari..."
-                          value={locality}
-                          onChange={(e) => setLocality(e.target.value)}
-                          className="w-full pl-10 pr-3 py-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Test Selection */}
-                    <div>
-                      <label className="text-[11px] font-bold text-slate-300 block mb-1">
-                        Select Blood Test / Package:
-                      </label>
-                      <select
-                        value={selectedTest}
-                        onChange={(e) => setSelectedTest(e.target.value)}
-                        className="w-full px-3 py-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                      >
-                        <option>Full Body Health Checkup (₹1,499 - 30% OFF)</option>
-                        <option>Complete Diabetes Care Profile (₹699)</option>
-                        <option>Total Thyroid Care Profile (₹399)</option>
-                        <option>Vitamin B12 & D3 Package (₹1,199)</option>
-                        <option>Senior Citizen Wellness Profile (₹1,999)</option>
-                        <option>Custom Prescription Test (Lab Advisor Call)</option>
-                      </select>
-                    </div>
-
-                    {/* Price & Discount Summary */}
-                    <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between text-xs">
+                  <div className="space-y-2">
+                    <a
+                      href="#booking"
+                      className="p-3 rounded-2xl bg-slate-50 hover:bg-blue-50/60 border border-slate-200/80 transition-all flex items-center justify-between group"
+                    >
                       <div>
-                        <span className="text-[10px] text-slate-400 block font-medium">Estimated Payable:</span>
-                        <span className="text-base font-black text-emerald-400">{selectedTest.split("(")[1]?.replace(")", "") || "Best Price"}</span>
+                        <p className="text-xs font-extrabold text-slate-900 group-hover:text-blue-600">
+                          Full Body Health Profile (60+ Tests)
+                        </p>
+                        <p className="text-[11px] text-slate-500">CBC, Sugar, LFT, KFT, Lipid & Thyroid</p>
                       </div>
-                      <span className="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[10px] font-bold">
-                        Pay After Collection
-                      </span>
-                    </div>
+                      <div className="text-right shrink-0 ml-2">
+                        <span className="text-xs font-black text-blue-600 block">₹1,499</span>
+                        <span className="text-[10px] text-slate-400 line-through">₹2,199</span>
+                      </div>
+                    </a>
+
+                    <a
+                      href="#booking"
+                      className="p-3 rounded-2xl bg-slate-50 hover:bg-blue-50/60 border border-slate-200/80 transition-all flex items-center justify-between group"
+                    >
+                      <div>
+                        <p className="text-xs font-extrabold text-slate-900 group-hover:text-blue-600">
+                          Complete Diabetes Care Profile
+                        </p>
+                        <p className="text-[11px] text-slate-500">HbA1c, Fasting & PP Sugar, Microalbumin</p>
+                      </div>
+                      <div className="text-right shrink-0 ml-2">
+                        <span className="text-xs font-black text-blue-600 block">₹699</span>
+                        <span className="text-[10px] text-slate-400 line-through">₹999</span>
+                      </div>
+                    </a>
+
+                    <a
+                      href="#booking"
+                      className="p-3 rounded-2xl bg-slate-50 hover:bg-blue-50/60 border border-slate-200/80 transition-all flex items-center justify-between group"
+                    >
+                      <div>
+                        <p className="text-xs font-extrabold text-slate-900 group-hover:text-blue-600">
+                          Total Thyroid Care Profile
+                        </p>
+                        <p className="text-[11px] text-slate-500">T3, T4, TSH Thyroid Function Parameters</p>
+                      </div>
+                      <div className="text-right shrink-0 ml-2">
+                        <span className="text-xs font-black text-blue-600 block">₹399</span>
+                        <span className="text-[10px] text-slate-400 line-through">₹599</span>
+                      </div>
+                    </a>
                   </div>
 
                   <a
                     href="#booking"
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-extrabold text-xs text-center shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 transition-all"
+                    className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs text-center transition-colors shadow-md shadow-blue-600/20 flex items-center justify-center gap-2"
                   >
                     <Calendar className="w-4 h-4" />
-                    <span>Proceed to Slot Selection</span>
+                    <span>Select Time Slot & Book Test</span>
                   </a>
                 </div>
               )}
 
-              {/* TAB 2: Upload Doctor's Prescription */}
+              {/* TAB 2: Doctor Prescription Photo Upload */}
               {activeTab === "prescription" && (
-                <div className="space-y-4 animate-in fade-in duration-200">
-                  <div>
-                    <h3 className="font-bold text-white text-base">Upload Doctor Prescription</h3>
-                    <p className="text-[11px] text-slate-400">Our lab expert will read your prescription & WhatsApp you the price in 5 mins.</p>
+                <div className="space-y-3 animate-in fade-in duration-200">
+                  <div className="text-left space-y-1">
+                    <p className="text-xs font-extrabold text-slate-900">Upload Doctor's Prescription</p>
+                    <p className="text-[11px] text-slate-500 leading-relaxed">
+                      Upload a photo of your doctor's handwritten prescription. Our lab technician will review it and call you with an exact quote & booking link.
+                    </p>
                   </div>
 
-                  {!rxUploaded ? (
-                    <form onSubmit={handleRxSubmit} className="space-y-3">
-                      <div className="border-2 border-dashed border-slate-800 rounded-2xl p-6 text-center hover:border-emerald-500/60 transition-colors bg-slate-900/50">
-                        <Upload className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
-                        <p className="text-xs font-bold text-slate-200">Tap to upload prescription image or PDF</p>
-                        <p className="text-[10px] text-slate-500 mt-1">PNG, JPG, PDF up to 10MB</p>
+                  {!prescriptionUploaded ? (
+                    <form onSubmit={handlePrescriptionSubmit} className="space-y-3">
+                      <div className="border-2 border-dashed border-slate-200 rounded-2xl p-4 text-center hover:border-blue-500 transition-colors bg-slate-50/50 cursor-pointer">
+                        <Upload className="w-6 h-6 text-blue-600 mx-auto mb-1" />
+                        <p className="text-xs font-bold text-slate-800">Tap to Upload Prescription Image/PDF</p>
+                        <p className="text-[10px] text-slate-400">PNG, JPG, PDF up to 10MB</p>
                       </div>
 
-                      <a
-                        href={`https://wa.me/917575962265?text=Hi%20LabLink,%20I%20want%20to%20send%20my%20doctor%20prescription%20photo%20for%20a%20blood%20test`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 transition-all"
+                      <input
+                        type="tel"
+                        required
+                        placeholder="Enter 10-Digit Mobile Number *"
+                        className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+
+                      <button
+                        type="submit"
+                        className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs transition-colors shadow-md shadow-blue-600/20 flex items-center justify-center gap-2"
                       >
-                        <MessageSquare className="w-4 h-4" />
-                        <span>Send Prescription Photo via WhatsApp</span>
-                      </a>
+                        <FileText className="w-4 h-4" />
+                        <span>Submit Prescription for Free Quote</span>
+                      </button>
                     </form>
                   ) : (
-                    <div className="text-center py-6 space-y-3 bg-emerald-950/30 rounded-2xl border border-emerald-500/30">
-                      <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
-                      <h4 className="text-sm font-bold text-white">Prescription Received!</h4>
-                      <p className="text-xs text-slate-300">Our Guwahati lab advisor is calling you right away.</p>
+                    <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-2">
+                      <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto" />
+                      <p className="text-xs font-extrabold text-emerald-900">Prescription Received!</p>
+                      <p className="text-[11px] text-emerald-700">
+                        Our Guwahati phlebotomist will call you within 15 minutes to confirm test pricing & home slot.
+                      </p>
+                      <button
+                        onClick={() => setPrescriptionUploaded(false)}
+                        className="text-[10px] text-emerald-800 underline font-bold"
+                      >
+                        Upload Another Prescription
+                      </button>
                     </div>
                   )}
                 </div>
               )}
 
-              {/* Card Footer Trust Bar */}
-              <div className="pt-3 border-t border-slate-900 flex items-center justify-between text-[10px] text-slate-400 font-medium">
-                <span className="flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5 text-blue-400" /> NABL Partner Labs
-                </span>
-                <span className="flex items-center gap-1">
-                  <Award className="w-3.5 h-3.5 text-emerald-400" /> Sterile Equipment
-                </span>
+              {/* TAB 3: Guwahati Locality Serviceability Checker */}
+              {activeTab === "locality" && (
+                <div className="space-y-3 animate-in fade-in duration-200">
+                  <div className="text-left space-y-1">
+                    <p className="text-xs font-extrabold text-slate-900">Check Guwahati Home Collection</p>
+                    <p className="text-[11px] text-slate-500">
+                      Enter your Guwahati locality name or pincode to check instant phlebotomist slot availability.
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleLocalityCheck} className="space-y-3">
+                    <div className="relative">
+                      <MapPin className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Zoo Road, GS Road, 781005..."
+                        value={localityQuery}
+                        onChange={(e) => {
+                          setLocalityQuery(e.target.value);
+                          setLocalityChecked(false);
+                        }}
+                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs transition-colors shadow-md shadow-blue-600/20 flex items-center justify-center gap-2"
+                    >
+                      <Search className="w-4 h-4" />
+                      <span>Check Doorstep Availability</span>
+                    </button>
+                  </form>
+
+                  {localityChecked && (
+                    <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
+                      <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <div>
+                        <p className="font-extrabold text-[11px]">⚡ Doorstep Collection Active in "{localityQuery}"</p>
+                        <p className="text-[10px] text-emerald-700">Phlebotomist available for arrival today!</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Quick Call Box inside Card */}
+              <div className="bg-slate-900 p-3.5 rounded-2xl text-white flex items-center justify-between text-xs">
+                <div>
+                  <p className="text-[10px] text-slate-400 font-medium">Need Urgent Help?</p>
+                  <p className="text-sm font-extrabold text-emerald-400">9365001624</p>
+                </div>
+                <a
+                  href="tel:+919365001624"
+                  className="px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs shadow-sm transition-colors"
+                >
+                  Call Now
+                </a>
               </div>
 
             </div>
@@ -300,3 +365,4 @@ export default function Hero() {
     </section>
   );
 }
+

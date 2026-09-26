@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import PartnerLabs from "@/components/PartnerLabs";
 import HowItWorks from "@/components/HowItWorks";
 import ServicesGrid from "@/components/ServicesGrid";
-import TrustTestimonials from "@/components/TrustTestimonials";
 import BookingWizard from "@/components/BookingWizard";
 import Footer from "@/components/Footer";
 
@@ -15,10 +14,8 @@ export default function Home() {
       <PartnerLabs />
       <HowItWorks />
       <ServicesGrid />
-      <TrustTestimonials />
       <BookingWizard />
       <Footer />
     </main>
   );
 }
-
