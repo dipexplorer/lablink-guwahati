@@ -101,21 +101,21 @@ export default function HowItWorks() {
         </div>
 
         {/* Bottom Quick Call Box */}
-        <div className="mt-16 max-w-3xl mx-auto bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 sm:p-8 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <div className="mt-12 sm:mt-16 max-w-3xl mx-auto bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-5 sm:p-8 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
           <div>
-            <h4 className="text-xl font-bold">Ready to schedule your home blood test?</h4>
+            <h4 className="text-lg sm:text-xl font-bold">Ready to schedule your home blood test?</h4>
             <p className="text-xs text-blue-100 mt-1">Get 30% OFF on your first test with instant slot confirmation.</p>
           </div>
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto shrink-0">
             <a
               href="#booking"
-              className="px-5 py-3 rounded-xl bg-white text-blue-700 font-bold text-sm hover:bg-slate-100 transition-colors shadow-md"
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white text-blue-700 font-extrabold text-xs sm:text-sm text-center hover:bg-slate-100 transition-colors shadow-md"
             >
               Book Test Now
             </a>
             <a
               href="tel:+919365001624"
-              className="px-5 py-3 rounded-xl bg-blue-800 hover:bg-blue-900 text-white font-bold text-sm border border-blue-500/40 transition-colors"
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-blue-800 hover:bg-blue-900 text-white font-extrabold text-xs sm:text-sm text-center border border-blue-500/40 transition-colors"
             >
               Call 9365001624
             </a>

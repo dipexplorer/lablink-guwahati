@@ -56,15 +56,15 @@ export default function BookingWizard() {
           {!submitted ? (
             <div>
               {/* Stepper Progress Header */}
-              <div className="flex items-center justify-between mb-8 pb-6 border-b border-slate-700/60">
+              <div className="flex items-center justify-between mb-6 sm:mb-8 pb-4 sm:pb-6 border-b border-slate-700/60">
                 {[
                   { num: 1, label: "Select Test" },
                   { num: 2, label: "Date & Time" },
                   { num: 3, label: "Patient Info" },
                 ].map((s) => (
-                  <div key={s.num} className="flex items-center gap-2">
+                  <div key={s.num} className="flex items-center gap-1.5 sm:gap-2">
                     <div
-                      className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-xs transition-colors ${
+                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center font-bold text-xs transition-colors ${
                         step === s.num
                           ? "bg-blue-600 text-white shadow-md shadow-blue-600/40"
                           : step > s.num
@@ -75,7 +75,7 @@ export default function BookingWizard() {
                       {step > s.num ? <CheckCircle2 className="w-4 h-4" /> : s.num}
                     </div>
                     <span
-                      className={`text-xs font-bold hidden sm:inline ${
+                      className={`text-xs font-bold ${
                         step === s.num ? "text-white" : "text-slate-400"
                       }`}
                     >
@@ -87,13 +87,13 @@ export default function BookingWizard() {
 
               {/* STEP 1: Select Test */}
               {step === 1 && (
-                <div className="space-y-6">
-                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                <div className="space-y-5">
+                  <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                     <Sparkles className="w-5 h-5 text-blue-400" />
                     <span>Choose Blood Test or Package:</span>
                   </h3>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                     {[
                       "Full Body Health Checkup (30% OFF)",
                       "Complete Diabetes Care Profile",
@@ -106,13 +106,13 @@ export default function BookingWizard() {
                         type="button"
                         key={pkg}
                         onClick={() => setSelectedPackage(pkg)}
-                        className={`p-4 rounded-xl text-left text-xs font-semibold transition-all border ${
+                        className={`p-3.5 sm:p-4 rounded-xl text-left text-xs font-semibold transition-all border ${
                           selectedPackage === pkg
                             ? "bg-blue-600/20 border-blue-500 text-white shadow-md shadow-blue-600/20"
                             : "bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-700"
                         }`}
                       >
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-between gap-2">
                           <span>{pkg}</span>
                           {selectedPackage === pkg && (
                             <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
@@ -125,7 +125,7 @@ export default function BookingWizard() {
                   <button
                     type="button"
                     onClick={() => setStep(2)}
-                    className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2"
+                    className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 mt-4"
                   >
                     <span>Next: Choose Time Slot</span>
                     <ChevronRight className="w-4 h-4" />
@@ -135,27 +135,27 @@ export default function BookingWizard() {
 
               {/* STEP 2: Date & Time Slot */}
               {step === 2 && (
-                <div className="space-y-6">
-                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                <div className="space-y-5">
+                  <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                     <Clock className="w-5 h-5 text-emerald-400" />
                     <span>Select Date & Time Slot in Guwahati:</span>
                   </h3>
 
                   <div className="space-y-4">
                     <div>
-                      <label className="text-xs font-bold text-slate-300 block mb-2">
+                      <label className="text-xs font-bold text-slate-300 block mb-1.5">
                         Preferred Date:
                       </label>
                       <input
                         type="date"
                         value={bookingDate}
                         onChange={(e) => setBookingDate(e.target.value)}
-                        className="w-full p-3.5 rounded-xl bg-slate-700 border border-slate-600 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full p-3.5 rounded-xl bg-slate-700 border border-slate-600 text-base sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-bold text-slate-300 block mb-2">
+                      <label className="text-xs font-bold text-slate-300 block mb-1.5">
                         Preferred Time Window:
                       </label>
                       <div className="space-y-2">
@@ -169,7 +169,7 @@ export default function BookingWizard() {
                             type="button"
                             key={time}
                             onClick={() => setBookingTime(time)}
-                            className={`w-full p-3.5 rounded-xl text-left text-xs font-semibold transition-all border ${
+                            className={`w-full p-3 sm:p-3.5 rounded-xl text-left text-xs font-semibold transition-all border ${
                               bookingTime === time
                                 ? "bg-emerald-600/20 border-emerald-500 text-white"
                                 : "bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-700"
@@ -182,11 +182,11 @@ export default function BookingWizard() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5 pt-2">
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="px-5 py-3.5 rounded-xl bg-slate-700 text-slate-300 font-bold text-xs hover:bg-slate-600 transition-colors flex items-center gap-1.5"
+                      className="px-4 py-3.5 rounded-xl bg-slate-700 text-slate-300 font-bold text-xs hover:bg-slate-600 transition-colors flex items-center gap-1"
                     >
                       <ArrowLeft className="w-4 h-4" />
                       Back
@@ -194,7 +194,7 @@ export default function BookingWizard() {
                     <button
                       type="button"
                       onClick={() => setStep(3)}
-                      className="flex-1 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2"
+                      className="flex-1 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2"
                     >
                       <span>Next: Patient Details</span>
                       <ChevronRight className="w-4 h-4" />
@@ -205,14 +205,14 @@ export default function BookingWizard() {
 
               {/* STEP 3: Patient Info */}
               {step === 3 && (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                     <User className="w-5 h-5 text-purple-400" />
                     <span>Patient Contact & Guwahati Address:</span>
                   </h3>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-300 block mb-1.5">
+                    <label className="text-xs font-bold text-slate-300 block mb-1">
                       Full Name *
                     </label>
                     <input
@@ -221,12 +221,12 @@ export default function BookingWizard() {
                       placeholder="e.g. Rahul Sharma"
                       value={patientName}
                       onChange={(e) => setPatientName(e.target.value)}
-                      className="w-full p-3.5 rounded-xl bg-slate-700 border border-slate-600 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full p-3.5 rounded-xl bg-slate-700 border border-slate-600 text-base sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-300 block mb-1.5">
+                    <label className="text-xs font-bold text-slate-300 block mb-1">
                       Phone Number (For WhatsApp Confirmation) *
                     </label>
                     <input
@@ -235,12 +235,12 @@ export default function BookingWizard() {
                       placeholder="e.g. 98640XXXXX"
                       value={patientPhone}
                       onChange={(e) => setPatientPhone(e.target.value)}
-                      className="w-full p-3.5 rounded-xl bg-slate-700 border border-slate-600 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full p-3.5 rounded-xl bg-slate-700 border border-slate-600 text-base sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold text-slate-300 block mb-1.5">
+                    <label className="text-xs font-bold text-slate-300 block mb-1">
                       Guwahati Locality & House Address *
                     </label>
                     <textarea
@@ -249,22 +249,22 @@ export default function BookingWizard() {
                       placeholder="e.g. House No 42, Zoo Road, near City Center Mall, Guwahati"
                       value={locality}
                       onChange={(e) => setLocality(e.target.value)}
-                      className="w-full p-3.5 rounded-xl bg-slate-700 border border-slate-600 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full p-3.5 rounded-xl bg-slate-700 border border-slate-600 text-base sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
 
-                  <div className="flex items-center gap-3 pt-2">
+                  <div className="flex items-center gap-2.5 pt-2">
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="px-5 py-3.5 rounded-xl bg-slate-700 text-slate-300 font-bold text-xs hover:bg-slate-600 transition-colors flex items-center gap-1.5"
+                      className="px-4 py-3.5 rounded-xl bg-slate-700 text-slate-300 font-bold text-xs hover:bg-slate-600 transition-colors flex items-center gap-1"
                     >
                       <ArrowLeft className="w-4 h-4" />
                       Back
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm transition-all shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-2"
+                      className="flex-1 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-extrabold text-sm transition-all shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-2"
                     >
                       <ShieldCheck className="w-5 h-5" />
                       <span>Confirm Home Appointment</span>

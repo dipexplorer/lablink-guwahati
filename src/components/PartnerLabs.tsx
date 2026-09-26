@@ -73,50 +73,50 @@ export default function PartnerLabs() {
       </div>
 
       {/* Trust Pillars Grid */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-          <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-slate-900">100% NABL Accredited</h4>
-            <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+            <h4 className="text-xs sm:text-sm font-bold text-slate-900">100% NABL Accredited</h4>
+            <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
               Samples are processed strictly in certified labs with rigorous quality control protocols.
             </p>
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-          <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+        <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
             <ThermometerSnowflake className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-slate-900">Cold-Chain Sample Safe</h4>
-            <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+            <h4 className="text-xs sm:text-sm font-bold text-slate-900">Cold-Chain Sample Safe</h4>
+            <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
               Maintained under 2°C - 8°C temperature control during transit to prevent degradation.
             </p>
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-          <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
+        <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
             <FileCheck className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-slate-900">Official Direct PDF Reports</h4>
-            <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+            <h4 className="text-xs sm:text-sm font-bold text-slate-900">Official Direct PDF Reports</h4>
+            <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
               Get official diagnostic reports delivered straight to your WhatsApp & Email within 24 hours.
             </p>
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-          <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+        <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
             <Award className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-slate-900">Zero Convenience Fee</h4>
-            <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+            <h4 className="text-xs sm:text-sm font-bold text-slate-900">Zero Convenience Fee</h4>
+            <p className="text-[11px] sm:text-xs text-slate-600 mt-0.5 leading-relaxed">
               Transparent lab-direct pricing with no hidden doorstep surcharges in Guwahati.
             </p>
           </div>

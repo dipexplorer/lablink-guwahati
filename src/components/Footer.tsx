@@ -161,26 +161,6 @@ export default function Footer() {
         </div>
 
       </div>
-
-      {/* Floating Action Buttons for Mobile */}
-      <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3">
-        <a
-          href="https://wa.me/917575962265"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-13 h-13 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl flex items-center justify-center transition-transform hover:scale-110"
-          title="Chat on WhatsApp"
-        >
-          <MessageSquare className="w-6 h-6" />
-        </a>
-        <a
-          href="tel:+919365001624"
-          className="w-13 h-13 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-xl flex items-center justify-center transition-transform hover:scale-110 md:hidden"
-          title="Call Phlebotomist Helpline"
-        >
-          <Phone className="w-6 h-6" />
-        </a>
-      </div>
     </footer>
   );
 }
