@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Calendar,
   Phone,
@@ -12,9 +12,53 @@ import {
   Thermometer,
   ArrowRight,
   MessageSquare,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      image: "/guwahati_phlebotomist_home_collection.png",
+      alt: "Certified LabLink Phlebotomist conducting doorstep blood sample collection at home in Guwahati",
+      liveBadge: "Doorstep Collection Active in Guwahati",
+      coldBadge: "Sterile Single-Use Kit",
+      title: "Home Blood Sample Collection",
+      tag: "Certified Phlebotomist",
+      description: "Trained medical staff visits your doorstep in Guwahati with sterile equipment & zero queue hassle.",
+    },
+    {
+      image: "/guwahati_phlebotomist_cold_chain.png",
+      alt: "Phlebotomist placing blood sample vials into 2°C - 8°C cold chain transport box",
+      liveBadge: "2°C - 8°C Cold Chain Transport",
+      coldBadge: "Insulated Thermal Box",
+      title: "Strict Cold-Chain Safety",
+      tag: "100% Specimen Integrity",
+      description: "Samples are immediately sealed and transported in temperature-controlled boxes for precise lab testing.",
+    },
+    {
+      image: "/guwahati_digital_report_family.png",
+      alt: "Assamese family viewing verified digital lab report on smartphone in Guwahati",
+      liveBadge: "24-Hour PDF Report Delivery",
+      coldBadge: "WhatsApp & Mobile Access",
+      title: "Fast Verified Digital Reports",
+      tag: "NABL Certified Labs",
+      description: "Receive your NABL-verified lab reports directly on WhatsApp and email within 24 hours.",
+    },
+  ];
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
+  const slide = slides[currentSlide];
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/20 to-slate-50 py-10 lg:py-16 border-b border-slate-200/60">
       {/* Background Decorative Blur Blobs */}
@@ -113,42 +157,73 @@ export default function Hero() {
 
           </div>
 
-          {/* Right Column: High-Impact Visual Image Card for Instant Visual Understanding */}
+          {/* Right Column: Multi-Image Interactive Carousel Card */}
           <div className="lg:col-span-5 relative mt-4 lg:mt-0">
-            <div className="relative mx-auto max-w-md bg-white rounded-3xl p-3 sm:p-4 border border-slate-200 shadow-xl space-y-4">
+            <div className="relative mx-auto max-w-md bg-white rounded-3xl p-3 sm:p-4 border border-slate-200 shadow-xl space-y-3.5">
               
-              {/* Main Visual Image Showing Doorstep Sample Collection */}
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] group shadow-sm">
+              {/* Carousel Image Display Window */}
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] group shadow-sm bg-slate-100">
                 <img
-                  src="/guwahati_phlebotomist_home_collection.png"
-                  alt="Certified LabLink Phlebotomist conducting doorstep blood sample collection at home in Guwahati"
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  src={slide.image}
+                  alt={slide.alt}
+                  className="w-full h-full object-cover object-top transition-all duration-500"
                 />
                 
                 {/* Live Badge Overlay */}
-                <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full text-white text-[11px] font-bold flex items-center gap-1.5 border border-slate-700/60 shadow-md">
+                <div className="absolute top-3 left-3 bg-slate-900/85 backdrop-blur-md px-3 py-1 rounded-full text-white text-[11px] font-bold flex items-center gap-1.5 border border-slate-700/60 shadow-md">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
-                  <span>Doorstep Collection Active in Guwahati</span>
+                  <span>{slide.liveBadge}</span>
                 </div>
 
-                {/* Cold Chain Badge */}
+                {/* Cold Chain / Feature Tag */}
                 <div className="absolute bottom-3 right-3 bg-blue-600/90 backdrop-blur-md px-2.5 py-1 rounded-xl text-white text-[10px] font-bold flex items-center gap-1 shadow-md border border-blue-400/40">
                   <Thermometer className="w-3.5 h-3.5" />
-                  <span>2°C - 8°C Cold Chain Transport</span>
+                  <span>{slide.coldBadge}</span>
+                </div>
+
+                {/* Interactive Navigation Arrow Buttons (Left & Right) */}
+                <button
+                  onClick={prevSlide}
+                  aria-label="Previous Slide"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-900/60 hover:bg-slate-900/90 text-white backdrop-blur-md flex items-center justify-center border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-lg"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                <button
+                  onClick={nextSlide}
+                  aria-label="Next Slide"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-900/60 hover:bg-slate-900/90 text-white backdrop-blur-md flex items-center justify-center border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-lg"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+
+                {/* Interactive Slide Indicator Dots */}
+                <div className="absolute bottom-3 left-3 flex items-center gap-1.5 bg-slate-900/70 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-700/50">
+                  {slides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        currentSlide === idx ? "w-5 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
 
-              {/* Instant Visual Caption & Trust Features */}
-              <div className="px-1 space-y-2.5">
+              {/* Dynamic Slide Caption & Trust Details */}
+              <div className="px-1 space-y-2">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-extrabold text-slate-900 text-sm">LabLink Guwahati Phlebotomy</h3>
+                  <h3 className="font-extrabold text-slate-900 text-sm">{slide.title}</h3>
                   <span className="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-extrabold text-[10px] border border-emerald-200">
-                    NABL Partner Labs
+                    {slide.tag}
                   </span>
                 </div>
 
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Trained medical staff visits your home with sterile single-use kits & sealed blood collection vials.
+                <p className="text-xs text-slate-600 leading-relaxed min-h-[36px]">
+                  {slide.description}
                 </p>
 
                 {/* Service Highlights */}
