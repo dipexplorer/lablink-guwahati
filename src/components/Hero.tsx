@@ -62,7 +62,7 @@ export default function Hero() {
 
             {/* Subtitle */}
             <p className="text-sm sm:text-lg text-slate-600 max-w-2xl font-normal leading-relaxed">
-              No long lab queues or traffic stress. Our trained, certified phlebotomists visit your home in Guwahati with sterile single-use kits and cold-chain sample transport containers ($2^\circ\text{C} - 8^\circ\text{C}$).
+              No long lab queues or traffic stress. Our trained, certified phlebotomists visit your home in Guwahati with sterile single-use kits and cold-chain sample transport containers (2°C - 8°C).
             </p>
 
             {/* Verified Trust Pillars */}
